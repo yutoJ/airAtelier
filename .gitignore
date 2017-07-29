@@ -19,3 +19,13 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+.env
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+
+# Ignore uploaded picture.
+public/uploads
