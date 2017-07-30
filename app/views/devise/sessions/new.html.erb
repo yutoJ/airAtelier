@@ -11,10 +11,8 @@
 </div>
 
 <div>
-  <% if devise_mapping.rememberable? -%>
-  <div class="form-group">
+  <% if devise_mapping.rememberable? %>
     <%= f.check_box :remember_me %>Remember Me
-  </div>
   <% end %>
   <span class="pull-right">
     <%= link_to "Forgot Password?", new_user_password_path %>
@@ -22,6 +20,9 @@
 </div>
 
 <div class="actions">
-  <%= f.submit "Log in", class: "btn btn-primary" %>
+  <%= f.submit "Log in", class: "btn btn-normal btn-block" %>
 </div>
 <% end %>
+
+<hr />
+<%= link_to "Sign in with Facebook", "", class: "btn btn-facebook btn-block" %>
