@@ -22,9 +22,19 @@ gem 'sass-rails', '~> 5.0'
 gem 'devise', '~> 4.2'
 gem 'toastr-rails', '~> 1.0'
 
+#test
+gem 'faker'
+
+#auth
+gem 'omniauth', '~> 1.6'
+gem 'omniauth-facebook', '~> 4.0'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
+
+#non-function
+gem 'dotenv-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
