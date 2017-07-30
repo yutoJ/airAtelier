@@ -20,6 +20,7 @@ gem 'sass-rails', '~> 5.0'
 
 #functions
 gem 'devise', '~> 4.2'
+gem 'toastr-rails', '~> 1.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
