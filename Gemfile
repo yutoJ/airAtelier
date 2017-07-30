@@ -25,6 +25,10 @@ gem 'toastr-rails', '~> 1.0'
 #test
 gem 'faker'
 
+#debug
+gem 'pry-rails'
+gem 'better_errors'
+
 #auth
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook', '~> 4.0'
