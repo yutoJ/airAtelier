@@ -21,6 +21,7 @@ gem 'sass-rails', '~> 5.0'
 #functions
 gem 'devise', '~> 4.2'
 gem 'toastr-rails', '~> 1.0'
+gem 'paperclip', '~> 5.1.0'
 
 #test
 gem 'faker'
