@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 body {
   color: #565a5c;
@@ -97,6 +99,25 @@ a {
   background-color: #2d467b;
 }
 
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  display: block;
+}
+
 //PANELS
 .panel-default .panel-heading{
   color: #ffffff;
@@ -104,6 +125,15 @@ a {
   font-size: 18px;
   font-weight: 400;
 }
+
+.panel-heading.preview {
+  padding: 0;
+}
+
+.panel-heading.preview img {
+  width: 100%;
+}
+
 .row-space-1 {
   margin-top: 6px;
   margin-bottom: 6px;
@@ -206,7 +236,7 @@ a {
   text-align: center;
   width: 1.25em;
 }
-
+/* slide bar */
 .sidebar-list{
   padding-left: 0;
   list-style: none;
