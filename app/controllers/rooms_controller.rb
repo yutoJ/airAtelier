@@ -1,6 +1,6 @@
-class RoomController < ApplicationController
+class RoomsController < ApplicationController
   before_action :set_room, except: [:index, :new, :create]
-  before_action :authenticate_user, except: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @rooms = current_user.rooms
@@ -15,13 +15,14 @@ class RoomController < ApplicationController
     if @room.save
       redirect_to listing_room_path(@room), notice: "Saved..."
     else
-      render :new, notice: "Something went wrong..."
+      flash[:alert] = "Something went wrong..."
+      render :new
     end
   end
 
   def show
   end
-  
+
   def listing
   end
 
@@ -44,7 +45,7 @@ class RoomController < ApplicationController
     if @room.update(room_params)
       flash[:notice] = "Saved..."
     else
-      flash[:notice] = "Something went wrong..."
+      flash[:alert] = "Something went wrong..."
     end
     # back redirection from 5.1
     redirect_back(fallback_location: request.referer)
@@ -52,9 +53,9 @@ class RoomController < ApplicationController
 
   private
   def set_room
-    @room = Room.find(prams[:id])
+    @room = Room.find(params[:id])
   end
   def room_params
-    params.require(:room).permit(:home_type, :room_type, :accomodate, :bed_room, :bath_roomm, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active)
+    params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active)
   end
 end

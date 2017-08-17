@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Create your beautiful palce
+  </div>
+  <div class="panel-body">
+    <div class="container">
+      <%= form_for @room do |f| %>
+        <div class="row">
+          <div class="col-md-4 select">
+            <div class="form-group">
+              <labal>Home Type</labal>
+              <%= f.select :home_type, [["Apartment", "Apartment"], ["House", "House"], ["Bed & Breakfast", "Bed & Breakfast"]], id:"home_type", prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-md-4 select">
+            <div class="form-group">
+              <labal>Room Type</labal>
+              <%= f.select :room_type, [["Entire", "Entire"], ["Private", "Private"], ["Shared", "Shared"]], id:"room_type", prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-md-4 select">
+            <div class="form-group">
+              <labal>Accommodate</labal>
+              <%= f.select :accommodate, (1..5).collect {|n| [ n.to_s, n ] }, id:"accomodate", prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-md-4 select">
+            <div class="form-group">
+              <labal>Bedrooms</labal>
+              <%= f.select :bed_room, (1..5).collect {|n| [ n.to_s, n ] }, id:"bed_room", prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-md-4 select">
+            <div class="form-group">
+              <labal>Bathrooms</labal>
+              <%= f.select :bath_room, (1..5).collect {|n| [ n.to_s, n ] }, id:"bath_rooms", prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+        </div>
+
+        <div><%= f.submit "Create my room", class: "btn btn-normal" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
