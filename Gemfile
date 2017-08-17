@@ -35,6 +35,9 @@ gem 'better_errors'
 gem 'omniauth', '~> 1.6'
 gem 'omniauth-facebook', '~> 4.0'
 
+#storage
+gem 'aws-sdk', '~> 2.8'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end

@@ -30,3 +30,4 @@
 # Ignore uploaded picture.
 public/uploads
 public/system/photos/images
+photos/*
