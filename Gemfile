@@ -23,6 +23,7 @@ gem 'font-awesome-sass'
 gem 'devise', '~> 4.2'
 gem 'toastr-rails', '~> 1.0'
 gem 'paperclip', '~> 5.1.0'
+gem 'geocoder', '~> 1.4'
 
 #test
 gem 'faker'
