@@ -18,6 +18,8 @@ gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'sass-rails', '~> 5.0'
 gem 'font-awesome-sass'
+gem 'jquery-ui-rails', '~> 5.0'
+gem 'jquery-ui-themes'
 
 #functions
 gem 'devise', '~> 4.2'
