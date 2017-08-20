@@ -26,6 +26,7 @@ gem 'devise', '~> 4.2'
 gem 'toastr-rails', '~> 1.0'
 gem 'paperclip', '~> 5.1.0'
 gem 'geocoder', '~> 1.4'
+gem 'ransack', '~> 1.7'
 
 #test
 gem 'faker'
