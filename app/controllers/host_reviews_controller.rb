@@ -1,7 +1,34 @@
 class HostReviewsController < ApplicationController
 
   def create
-    @host_review = current_user.host_reviews.create(host_review_params)
+    # Check if the reservation exist (room_id, quest_id, host_id)
+
+    # Check if the current host aleady reviewd the guest in this reservation
+
+    @reservation = Reservation.where(
+      id: host_review_params[:reservation_id],
+      room_id: host_review_params[:room_id],
+      user_id: host_review_params[:guest_id]
+    ).first
+
+    if !@reservation.nil?
+      @has_reviewed = HostReview.where(
+        reservation_id: @reservation.id,
+        guest_id: host_review_params[:guest_id]
+      ).first
+
+      if @has_reviewed.nil?
+        # Allow to review
+        @host_review = current_user.host_reviews.create(host_review_params)
+        flash[:success] = "Review created..."
+      else
+        # Already reviewed
+        flash[:success] = "You aleady reviewd this Reservation"
+      end
+    else
+      flash[:alert] = "Not found this reservation"
+    end
+
     redirect_back(fallback_location: request.referer)
   end
 
