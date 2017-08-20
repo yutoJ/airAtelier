@@ -32,7 +32,7 @@ class GuestReviewsController < ApplicationController
 
   def destroy
     @guest_review = Review.find(params[:id])
-    @guest_review.desstroy
+    @guest_review.destroy
 
     redirect_back(fallback_location: request.referer, notice: "Removed...!")
   end

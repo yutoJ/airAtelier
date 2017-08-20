@@ -34,7 +34,7 @@ class HostReviewsController < ApplicationController
 
   def destroy
     @host_review = Review.find(params[:id])
-    @host_review.desstroy
+    @host_review.destroy
 
     redirect_back(fallback_location: request.referer, notice: "Removed...!")
   end
