@@ -22,6 +22,13 @@
 
           <div class="col-md-4 select">
             <div class="form-group">
+              <labal>Room Type</labal>
+              <%= f.select :instant, Room.instants.map { |key, value| [key.humanize, key]}, selected: 'Instant', prompt: "Select...", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="col-md-4 select">
+            <div class="form-group">
               <labal>Accommodate</labal>
               <%= f.select :accommodate, (1..5).collect {|n| [ n.to_s, n ] }, id:"accomodate", prompt: "Select...", class: "form-control" %>
             </div>
