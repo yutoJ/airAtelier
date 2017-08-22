@@ -15,5 +15,7 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
 //= require toastr
-//= require_tree .
 //= require bootstrap-sprockets
+//= require moment
+//= require fullcalendar
+//= require_tree .
