@@ -59,5 +59,28 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:start_date, :end_date)
   end
+  
+  def charge(room, reservation)
+    if !reservation.user.strip_id.blank?
+      customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
+      charge = Stripe::charge.create(
+        :customer => customer.id,
+        :amount => reservation.total * 100,
+        :description => room.listing_name,
+        :currency => "usd"
+      )
+
+      if charge
+        reservation.approved!
+        flash[:notice] = "Reservation created successfully!"
+      else
+        reservation.declined!
+        flash[:alert] = "Cannot charge with this payment method!"
+      end
+    end
+  rescue Stripe::CardError => e
+    reservation.declined!
+    flash[:alert] = e.message
+  end
 
 end
