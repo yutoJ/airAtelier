@@ -48,4 +48,8 @@ Rails.application.routes.draw do
   get '/host_calendar' => "calendars#host"
   get '/payment_method' => "users#payment"
   post '/add_card' => "users#add_card"
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
