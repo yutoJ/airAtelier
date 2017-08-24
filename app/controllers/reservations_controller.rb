@@ -43,6 +43,7 @@ class ReservationsController < ApplicationController
 
   def approve
       @reservation.Approved!
+      ReservationMailer.send_email_to_guest(@reservation.user).deliver
       redirect_to your_reservations_path
   end
 
@@ -59,7 +60,7 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:start_date, :end_date)
   end
-  
+
   def charge(room, reservation)
     if !reservation.user.strip_id.blank?
       customer = Stripe::Customer.retrieve(reservation.user.stripe_id)
@@ -72,6 +73,7 @@ class ReservationsController < ApplicationController
 
       if charge
         reservation.approved!
+        ReservationMailer.send_email_to_guest(reservation.user, room).deliver_later
         flash[:notice] = "Reservation created successfully!"
       else
         reservation.declined!
