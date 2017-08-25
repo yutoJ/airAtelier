@@ -19,4 +19,5 @@
 //= require moment
 //= require fullcalendar
 //= require card
+//= require cable
 //= require_tree .
