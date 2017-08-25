@@ -1,2 +1,30 @@
-<h1>Messages#index</h1>
-<p>Find me in app/views/messages/index.html.erb</p>
+<div class="row">
+  <div class="col-md-3 text-center">
+    <%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
+    <strong><%= @other.fullname %></strong>
+    <%= link_to "View Profile", @other, class: "btn btn-default" %>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Conversation with <%= @other.fullname %>
+        <input type="hidden" id="conversation_id" value="<%= @conversation.id %>">
+      </div>
+      <div class="panel-body">
+        <div class="container text-center">
+          <%= form_for [@conversation, @conversation.messages.new] do |f| %>
+            <div class="form-group">
+              <%= f.text_field :context, placeholder: "Add a personal message", class: "form-control" %>
+            </div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <div>
+              <%= f.submit "Send Message", class: "btn btn-normal" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="chat"><%= render @messages %></div>
+  </div>
+</div>
