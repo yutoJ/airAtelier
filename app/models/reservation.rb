@@ -8,7 +8,7 @@ class Reservation < ApplicationRecord
 
   scope :current_week_revenue, -> (user) {
     joins(:room)
-    .where("room.user_id = ? AMD reservations.updated_at >= AND reservations.status = ?", user.id, 1.week.ago, 1)
+    .where("room.user_id = ? AND reservations.updated_at >= AND reservations.status = ?", user.id, 1.week.ago, 1)
     .order(updated_at: :asc)
   }
 

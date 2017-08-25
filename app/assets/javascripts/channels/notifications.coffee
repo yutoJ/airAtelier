@@ -3,4 +3,5 @@ $(() ->
     received: (data) ->
       $('#num_of_unread').html(data.unread)
       $('#notifications').prepend(data.message)
+      $('#navbar_num_of_unread').prepend(data.unread)
 )
