@@ -12,6 +12,13 @@ class User < ApplicationRecord
   has_many :guest_reviews, class_name: "GuestReview", foreign_key: "guest_id"
   has_many :host_reviews, class_name: "HostReview", foreign_key: "host_id"
 
+  has_one :setting
+  after_create :add_setting
+
+  def add_setting
+    Setting.create(user: self, enable_sms: true, enable_email: true)
+  end
+
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
     if user
@@ -24,7 +31,7 @@ class User < ApplicationRecord
         user.image = auth.info.image
         user.uid = auth.uid
         user.provider = auth.provider
-
+        
         # user.skip_confirmation!
       end
     end

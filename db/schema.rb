@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824145657) do
+ActiveRecord::Schema.define(version: 20170824235714) do
 
   create_table "calendars", force: :cascade do |t|
     t.date     "day"
@@ -103,6 +103,15 @@ ActiveRecord::Schema.define(version: 20170824145657) do
     t.float    "longitude"
     t.integer  "instant",      default: 1
     t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.boolean  "enable_sms"
+    t.boolean  "enable_email"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

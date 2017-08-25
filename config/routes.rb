@@ -49,6 +49,9 @@ Rails.application.routes.draw do
   get '/payment_method' => "users#payment"
   post '/add_card' => "users#add_card"
 
+  get '/notification_settings' => 'settings#edit'
+  post '/notification_settings' => 'settings#update'
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
