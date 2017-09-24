@@ -43,7 +43,7 @@ class ReservationsController < ApplicationController
 
   def approve
       @reservation.Approved!
-      ReservationMailer.send_email_to_guest(@reservation.user).deliver if reservation.user.setting.enable_email
+      ReservationMailer.send_email_to_guest(@reservation.user).deliver if @reservation.user.setting.enable_email
       redirect_to your_reservations_path
   end
 
